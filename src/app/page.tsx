@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 const skills = [
@@ -90,6 +90,27 @@ const projects = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
+
+  // Listen to scroll and update activeSection
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "contact"];
+      let current = "home";
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120) current = id;
+        }
+      }
+      setActiveSection(current);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="font-sans bg-white dark:bg-black text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
       {/* Header/Navbar */}
@@ -124,102 +145,58 @@ export default function Home() {
         {/* Desktop Nav */}
         <nav className="hidden sm:block">
           <ul className="flex gap-6 text-base font-semibold">
-            <li>
-              <a
-                href="#home"
-                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="#about"
-                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
-              >
-                About
-              </a>
-            </li>
-            <li>
-              <a
-                href="#skills"
-                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
-              >
-                Skills
-              </a>
-            </li>
-            <li>
-              <a
-                href="#projects"
-                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
-              >
-                Projects
-              </a>
-            </li>
-            <li>
-              <a
-                href="#contact"
-                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
-              >
-                Contact
-              </a>
-            </li>
+            {[
+              { id: "home", label: "Home" },
+              { id: "about", label: "About" },
+              { id: "skills", label: "Skills" },
+              { id: "projects", label: "Projects" },
+              { id: "contact", label: "Contact" },
+            ].map((item) => (
+              <li key={item.id}>
+                <a
+                  href={`#${item.id}`}
+                  className={`hover:text-gray-700 dark:hover:text-gray-200 transition ${
+                    activeSection === item.id
+                      ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
+                      : ""
+                  }`}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
           </ul>
         </nav>
         {/* Mobile Nav Dropdown */}
         {menuOpen && (
           <nav className="absolute top-full left-0 w-full bg-white dark:bg-black shadow-lg rounded-b-2xl sm:hidden z-40">
             <ul className="flex flex-col gap-2 py-4 px-8 text-base font-semibold">
-              <li>
-                <a
-                  href="#home"
-                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Home
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  About
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#skills"
-                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Skills
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#projects"
-                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Projects
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#contact"
-                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  Contact
-                </a>
-              </li>
+              {[
+                { id: "home", label: "Home" },
+                { id: "about", label: "About" },
+                { id: "skills", label: "Skills" },
+                { id: "projects", label: "Projects" },
+                { id: "contact", label: "Contact" },
+              ].map((item) => (
+                <li key={item.id}>
+                  <a
+                    href={`#${item.id}`}
+                    className={`block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition ${
+                      activeSection === item.id
+                        ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
+                        : ""
+                    }`}
+                    onClick={() => setMenuOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </nav>
         )}
       </header>
-      
+
       {/* Hero Section */}
       <section
         id="home"
@@ -259,7 +236,7 @@ export default function Home() {
             </h1>
             {/* Divider */}
             <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
-            <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-xl">
+            <p className="text-lg sm:text-xl text-dark-700 dark:text-gray-300 max-w-xl">
               Another day, another line of code.
             </p>
 
@@ -409,7 +386,8 @@ export default function Home() {
             <span className="font-semibold text-gray-300">
               Davao City, Philippines
             </span>
-            .<br />I specialize in building modern, responsive websites and
+            .
+            <br />I specialize in building modern, responsive websites and
             applications using:
           </p>
           {/* Skill Badges */}
@@ -746,69 +724,6 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </div>
-            {/* Social Media Links */}
-            <div className="flex gap-3 sm:gap-5 mt-8">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
-              >
-                <svg
-                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0" />
-                </svg>
-              </a>
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="GitHub"
-                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
-              >
-                <svg
-                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg>
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
-              >
-                <svg
-                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.25 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.845-1.563 3.043 0 3.604 2.004 3.604 4.609v5.587z" />
-                </svg>
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Twitter"
-                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
-              >
-                <svg
-                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.724c-.951.555-2.005.959-3.127 1.184a4.916 4.916 0 00-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.855 2.01-.855 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 01-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.025 10.025 0 0024 4.557z" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
