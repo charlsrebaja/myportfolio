@@ -3,62 +3,86 @@ import React, { useState } from "react";
 import Image from "next/image";
 
 const skills = [
-  "HTML",
-  "CSS",
-  "JavaScript",
-  "PHP",
-  "Next.js",
-  "Bootstrap",
-  "Tailwind CSS",
-  "MySQL",
+  {
+    name: "HTML",
+    img: "/images/html.png",
+  },
+  {
+    name: "CSS",
+    img: "/images/css.png",
+  },
+  {
+    name: "JavaScript",
+    img: "/images/javascript.png",
+  },
+  {
+    name: "PHP",
+    img: "/images/php.png",
+  },
+  {
+    name: "Next.js",
+    img: "/images/nextjs.png",
+  },
+  {
+    name: "Bootstrap",
+    img: "/images/bootstrap.png",
+  },
+  {
+    name: "Tailwind CSS",
+    img: "/images/tailwindcss.png",
+  },
+  {
+    name: "Xampp",
+    img: "/images/xampp.png",
+  },
 ];
 
 const projects = [
   {
-    name: "Project One",
-    desc: "A modern web app for task management.",
-    tech: "Next.js, Tailwind CSS, MySQL",
-    demo: "#",
+    name: "Big Brew",
+    desc: "A modern web app for discovering and ordering  milk tea from Big Brew.",
+    tech: "HTML, Tailwind CSS, JavaScript",
+    demo: "https://bigbrew-bycharls.netlify.app/",
     github: "#",
     img: "/projects/project1.png",
   },
   {
-    name: "Project Two",
-    desc: "Portfolio website for a designer.",
-    tech: "HTML, CSS, Bootstrap",
-    demo: "#",
+    name: "Waxi's",
+    desc: "A sleek way to browse, order, and enjoy your favorite fast food anytime.",
+    tech: "HTML, CSS, Bootstrap,JavaScript",
+    demo: "https://waxis-designed-by-charls.netlify.app/",
     github: "#",
     img: "/projects/project2.png",
   },
   {
-    name: "Project Three",
-    desc: "E-commerce platform for local stores.",
-    tech: "PHP, MySQL, Tailwind CSS",
-    demo: "#",
+    name: "Coffee Shop",
+    desc: "A modern web app for ordering fresh, handcrafted coffee anytime.",
+    tech: "HTML,PHP, MySQL, Tailwind CSS",
+    demo: "https://coffeeshopdesignedby-charls.netlify.app/",
     github: "#",
     img: "/projects/project3.png",
   },
   {
-    name: "Project Four",
-    desc: "Real-time chat application.",
-    tech: "JavaScript, Node.js, CSS",
-    demo: "#",
+    name: "Mindanao Waterfalls",
+    desc: "A modern web app for discovering the hidden waterfalls of Mindanao.",
+    tech: "HTML, CSS, Bootstrap,JavaScript",
+    demo: "https://mindanao-waterfalls-charlsrebaja.netlify.app/",
     github: "#",
     img: "/projects/project4.png",
   },
   {
-    name: "Project Five",
-    desc: "Blog platform for tech articles.",
-    tech: "Next.js, Tailwind CSS",
-    demo: "#",
+    name: "Mindanao Peaks",
+    desc: "A modern web app for exploring the highest and most scenic mountains in Mindanao.",
+    tech: "Html, Tailwind CSS, JavaScript",
+    demo: "https://mindanaopeakstikangniyeye.netlify.app/",
     github: "#",
     img: "/projects/project5.png",
   },
   {
-    name: "Project Six",
-    desc: "Landing page for a startup.",
-    tech: "HTML, CSS, JavaScript",
-    demo: "#",
+    name: "SK Barangay Mankilam",
+    desc: "Empowering youth through digital access to programs, events, and initiatives.",
+    tech: "HTML, CSS, Bootstrap,JavaScript",
+    demo: "https://skbarangaymankilam.netlify.app/",
     github: "#",
     img: "/projects/project6.png",
   },
@@ -69,16 +93,16 @@ export default function Home() {
   return (
     <div className="font-sans bg-white dark:bg-black text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
       {/* Header/Navbar */}
-      <header className="sticky top-0 z-30 backdrop-blur-xl bg-white/60 dark:bg-black/60 shadow-lg flex items-center justify-between px-6 py-4 rounded-b-2xl border-b border-[#00CEC8] dark:border-[#00CEC8]">
+      <header className="sticky top-0 z-30 backdrop-blur-xl bg-white/80 dark:bg-black/80 shadow-lg flex items-center justify-between px-6 py-4 rounded-b-2xl border-b border-gray-300 dark:border-gray-700">
         <a
           href="#home"
-          className="text-[#00CEC8] dark:text-[#00CEC8] font-extrabold text-2xl tracking-tight drop-shadow-lg"
+          className="text-black dark:text-white font-extrabold text-2xl tracking-tight drop-shadow-lg"
         >
           Charls
         </a>
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden flex items-center justify-center p-2 rounded-full border border-[#00CEC8] dark:border-[#00CEC8] bg-white dark:bg-black text-[#00CEC8] dark:text-[#00CEC8] shadow focus:outline-none"
+          className="sm:hidden flex items-center justify-center p-2 rounded-full border border-gray-400 dark:border-gray-600 bg-white dark:bg-black text-gray-700 dark:text-gray-200 shadow focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-800 transition"
           aria-label="Open menu"
           onClick={() => setMenuOpen(!menuOpen)}
         >
@@ -103,7 +127,7 @@ export default function Home() {
             <li>
               <a
                 href="#home"
-                className="hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
               >
                 Home
               </a>
@@ -111,7 +135,7 @@ export default function Home() {
             <li>
               <a
                 href="#about"
-                className="hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
               >
                 About
               </a>
@@ -119,7 +143,7 @@ export default function Home() {
             <li>
               <a
                 href="#skills"
-                className="hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
               >
                 Skills
               </a>
@@ -127,7 +151,7 @@ export default function Home() {
             <li>
               <a
                 href="#projects"
-                className="hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
               >
                 Projects
               </a>
@@ -135,7 +159,7 @@ export default function Home() {
             <li>
               <a
                 href="#contact"
-                className="hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                className="hover:text-gray-700 dark:hover:text-gray-200 transition"
               >
                 Contact
               </a>
@@ -149,7 +173,7 @@ export default function Home() {
               <li>
                 <a
                   href="#home"
-                  className="block py-2 hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
                   onClick={() => setMenuOpen(false)}
                 >
                   Home
@@ -158,7 +182,7 @@ export default function Home() {
               <li>
                 <a
                   href="#about"
-                  className="block py-2 hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
                   onClick={() => setMenuOpen(false)}
                 >
                   About
@@ -167,7 +191,7 @@ export default function Home() {
               <li>
                 <a
                   href="#skills"
-                  className="block py-2 hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
                   onClick={() => setMenuOpen(false)}
                 >
                   Skills
@@ -176,7 +200,7 @@ export default function Home() {
               <li>
                 <a
                   href="#projects"
-                  className="block py-2 hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
                   onClick={() => setMenuOpen(false)}
                 >
                   Projects
@@ -185,7 +209,7 @@ export default function Home() {
               <li>
                 <a
                   href="#contact"
-                  className="block py-2 hover:text-[#00CEC8] dark:hover:text-[#00CEC8] transition"
+                  className="block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition"
                   onClick={() => setMenuOpen(false)}
                 >
                   Contact
@@ -195,150 +219,245 @@ export default function Home() {
           </nav>
         )}
       </header>
-
+      
       {/* Hero Section */}
       <section
         id="home"
-        className="flex flex-col items-center justify-center py-20 px-4 sm:px-8 text-center"
+        className="w-full flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-12 md:px-20 py-20 gap-12 relative bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: "url('/images/hero-bg.png')",
+        }}
       >
-        <div className="flex flex-col items-center mb-6">
-          <div className="backdrop-blur-xl bg-white/40 dark:bg-black/40 rounded-full p-2 shadow-xl border-2 border-[#00CEC8] dark:border-[#00CEC8]">
-            <Image
-              src="/images/profilepic.jpg"
-              alt="Charls Profile"
-              width={120}
-              height={120}
-              className="rounded-full object-cover w-[180px] h-[180px]"
-              priority
-            />
+        {/* 👋 Waving Animation Style */}
+        <style>{`
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      10% { transform: rotate(14deg); }
+      20% { transform: rotate(-8deg); }
+      30% { transform: rotate(14deg); }
+      40% { transform: rotate(-4deg); }
+      50% { transform: rotate(10deg); }
+      60%, 100% { transform: rotate(0deg); }
+    }
+    .wave-emoji {
+      display: inline-block;
+      animation: wave 2s infinite;
+      transform-origin: 70% 70%;
+    }
+  `}</style>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 bg-white/80 dark:bg-black/20" />
+
+        {/* Content Wrapper */}
+        <div className="relative z-10 flex flex-col-reverse md:flex-row items-center justify-between w-full gap-12">
+          {/* Left: Text, Icons, CTA */}
+          <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-snug">
+              Hi, I’m Charls <span className="wave-emoji">👋</span> Passionate
+              Web Developer
+            </h1>
+            {/* Divider */}
+            <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
+            <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-300 max-w-xl">
+              Another day, another line of code.
+            </p>
+
+            {/* Social Icons */}
+            <div className="flex gap-4 justify-center md:justify-start">
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/choy.rebaja"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 
+              24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 
+              1.893-4.788 4.659-4.788 1.325 0 2.463.099 
+              2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 
+              1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 
+              24 24 23.408 24 22.674V1.326C24 .592 23.405 0 
+              22.675 0z"
+                  />
+                </svg>
+              </a>
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/charlsrebaja"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M12 0C5.37 0 0 5.37 0 12c0 
+              5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 
+              1.205.084 1.84 1.236 1.84 1.236 
+              1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 
+              0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 
+              0 0 1.008-.322 3.301 1.23a11.52 11.52 
+              0 0 1 3.003-.404c1.018.005 2.045.138 
+              3.003.404 2.291-1.553 3.297-1.23 
+              3.297-1.23.653 1.653.242 2.873.118 
+              3.176.77.84 1.235 1.911 1.235 
+              3.221 0 4.609-2.803 5.624-5.475 
+              5.921.43.371.823 1.102.823 
+              2.222v3.293c0 .322.218.694.825.576C20.565 
+              22.092 24 17.592 24 12.297 24 5.67 18.627 0 12 0z"
+                  />
+                </svg>
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+              >
+                <svg
+                  className="w-6 h-6 text-gray-800 dark:text-white"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.85-3.037-1.852 
+              0-2.135 1.445-2.135 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 
+              1.637-1.85 3.368-1.85 3.599 0 4.264 2.368 4.264 5.455v6.286zM5.337 
+              7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 
+              4.125zM6.814 20.452H3.861V9h2.953v11.452zM22.225 
+              0H1.771C.792 0 0 .771 0 1.723v20.549C0 
+              23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 
+              22.271V1.723C24 .771 23.2 0 22.225 0z"
+                  />
+                </svg>
+              </a>
+            </div>
+
+            {/* CTA Button */}
+            <a
+              href="#contact"
+              className="mt-4 inline-block bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-3 rounded-full shadow-md border border-transparent hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300"
+            >
+              Contact Me
+            </a>
           </div>
-          <div className="flex gap-4 mt-6">
-            {/* Social Icons - glassmorphism */}
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
-            >
-              {/* Facebook SVG */}
-              <svg
-                className="w-7 h-7 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
-            >
-              {/* GitHub SVG */}
-              <svg
-                className="w-7 h-7 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-              </svg>
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
-            >
-              {/* LinkedIn SVG */}
-              <svg
-                className="w-7 h-7 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.25 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.845-1.563 3.043 0 3.604 2.004 3.604 4.609v5.587z" />
-              </svg>
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
-            >
-              {/* Twitter SVG */}
-              <svg
-                className="w-7 h-7 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.724c-.951.555-2.005.959-3.127 1.184a4.916 4.916 0 00-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.855 2.01-.855 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 01-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.025 10.025 0 0024 4.557z" />
-              </svg>
-            </a>
+
+          {/* Right: Profile Image */}
+          <div className="w-full md:w-1/2 flex justify-center items-center">
+            <div className="relative w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 rounded-full overflow-hidden shadow-xl border-4 border-dark-300 dark:border-gray-600 backdrop-blur-md bg-white/60 dark:bg-black/60">
+              <Image
+                src="/images/profilepic.jpg"
+                alt="Charls Profile"
+                layout="fill"
+                objectFit="cover"
+                priority
+              />
+            </div>
           </div>
         </div>
-        <h1 className="text-2xl sm:text-4xl font-semibold mb-4 text-[#00CEC8] ">
-          Hi, I’m Charls – a passionate Web Developer
-        </h1>
-        <p className="text-lg sm:text-xl mb-8 text-gray-800 dark:text-gray-200 font-medium drop-shadow">
-          Another day, another code
-        </p>
-        <a
-          href="#contact"
-          className="inline-block bg-[#00CEC8]/80 dark:bg-[#00CEC8]/80 text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-[#00CEC8]/90 dark:hover:bg-[#00CEC8]/90 transition backdrop-blur-xl border border-[#00CEC8] dark:border-[#00CEC8]"
-        >
-          Hire Me
-        </a>
       </section>
-
       {/* About Section */}
       <section
         id="about"
-        className="max-w-3xl mx-auto py-16 px-4 sm:px-8 text-center"
+        className="max-w-3xl mx-auto py-16 px-4 sm:px-8 animate-fadein"
       >
-        <div className="backdrop-blur-xl bg-white/60 dark:bg-gray-900/60 rounded-2xl p-8 shadow-lg border border-[#00CEC8] dark:border-[#00CEC8]">
-          <h2 className="text-3xl font-bold mb-4 text-[#00CEC8] dark:text-[#00CEC8] drop-shadow-lg">
+        <style>{`
+          @keyframes fadein {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+          .animate-fadein {
+            animation: fadein 1.2s cubic-bezier(0.4,0,0.2,1);
+          }
+        `}</style>
+        <div className="backdrop-blur-xl bg-gradient-to-br from-black via-gray-900 to-gray-800 rounded-2xl p-8 shadow-lg border border-gray-800 flex flex-col items-start">
+          {/* Optional Profile Image */}
+          <div className="mb-4">
+            <Image
+              src="/images/profilepic.jpg"
+              alt="Charls Profile"
+              width={80}
+              height={80}
+              className="rounded-full border-4 border-gray-700 shadow-lg"
+            />
+          </div>
+          <h2 className="text-3xl font-bold mb-2 text-white drop-shadow-lg text-left">
             About Me
           </h2>
-          <p className="text-lg text-gray-800 dark:text-gray-200 font-medium drop-shadow">
-            I'm Charls, a web developer with a love for building beautiful and
-            functional websites. My passion for development drives me to learn
-            new technologies and create solutions that make a difference. I
-            enjoy turning ideas into reality through code and design.
+          {/* Divider */}
+          <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mb-6" />
+          <p className="text-lg text-gray-200 mb-4 text-left">
+            Hi! I'm <span className="font-bold text-white">Charls</span>, a
+            Bachelor of Science in Information Technology and a passionate,
+            creative web developer based in{" "}
+            <span className="font-semibold text-gray-300">
+              Davao City, Philippines
+            </span>
+            .<br />I specialize in building modern, responsive websites and
+            applications using:
+          </p>
+          {/* Skill Badges */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {[
+              "HTML",
+              "CSS",
+              "Bootstrap",
+              "Tailwind",
+              "JavaScript",
+              "PHP",
+              "Next.js",
+              "MySQL",
+              "XAMPP",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 rounded-full text-sm font-semibold bg-gray-700/40 text-gray-200 border border-gray-600 shadow-sm hover:bg-gray-600/70 transition"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+          <p className="mb-4 text-gray-300 text-left">
+            With a keen eye for design and detail, I enjoy turning ideas into
+            digital experiences that are fast, accessible, and visually
+            engaging. Whether working on personal projects or collaborating with
+            a team, I always bring dedication, curiosity, and a problem-solving
+            mindset.
+          </p>
+          <p className="text-gray-300 text-left">
+            I'm continuously learning and exploring new technologies to improve
+            my skills and deliver even better solutions.
           </p>
         </div>
       </section>
-
-      {/* Skills Section */}
-      <section id="skills" className="max-w-4xl mx-auto py-16 px-4 sm:px-8">
-        <h2 className="text-3xl font-bold mb-8 text-[#00CEC8] dark:text-[#00CEC8] text-center drop-shadow-lg">
-          Skills
-        </h2>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-          {skills.map((skill) => (
-            <div
-              key={skill}
-              className="backdrop-blur-xl bg-white/60 dark:bg-gray-900/60 rounded-xl p-6 text-center font-semibold text-[#00CEC8] dark:text-[#00CEC8] shadow-lg border border-[#00CEC8] dark:border-[#00CEC8]"
-            >
-              {skill}
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Projects Section */}
       <section id="projects" className="max-w-6xl mx-auto py-16 px-4 sm:px-8">
-        <h2 className="text-3xl font-bold mb-8 text-[#00CEC8] dark:text-[#00CEC8] text-center drop-shadow-lg">
+        <h2 className="text-3xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
           My Projects
         </h2>
+        {/* Divider */}
+        <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto mb-8" />
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="backdrop-blur-xl bg-white/60 dark:bg-gray-900/60 rounded-2xl shadow-xl overflow-hidden flex flex-col border border-[#00CEC8] dark:border-[#00CEC8] transition-transform duration-200 hover:scale-102 hover:shadow-2xl hover:border-[#00cec8]/80 dark:hover:border-[#00cec8]/80"
+              className="backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-xl overflow-hidden flex flex-col border border-gray-300 dark:border-gray-700 transition-transform duration-200 hover:scale-102 hover:shadow-2xl hover:border-gray-500 dark:hover:border-gray-400"
             >
               <Image
                 src={project.img}
@@ -348,13 +467,13 @@ export default function Home() {
                 className="object-cover w-full h-44 rounded-t-2xl"
               />
               <div className="p-6 flex flex-col flex-1">
-                <h3 className="text-xl font-bold text-[#00CEC8] dark:text-[#00CEC8] mb-2 drop-shadow">
+                <h3 className="text-xl font-bold text-black dark:text-white mb-2 drop-shadow">
                   {project.name}
                 </h3>
                 <p className="text-gray-800 dark:text-gray-200 mb-2 font-medium drop-shadow">
                   {project.desc}
                 </p>
-                <p className="text-sm text-[#00CEC8] dark:text-[#00CEC8] mb-4 font-semibold">
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4 font-semibold">
                   {project.tech}
                 </p>
                 <div className="mt-auto flex gap-3">
@@ -362,7 +481,7 @@ export default function Home() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-[#00CEC8]/80 dark:bg-[#00CEC8]/80 text-white px-4 py-2 rounded-full shadow hover:bg-[#00CEC8]/90 dark:hover:bg-[#00CEC8]/90 transition text-sm font-semibold backdrop-blur border border-[#00CEC8] dark:border-[#00CEC8]"
+                    className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-4 py-2 rounded-full shadow hover:bg-gray-700 dark:hover:bg-gray-300 transition text-sm font-semibold backdrop-blur border border-gray-700 dark:border-gray-300"
                   >
                     Live Demo
                   </a>
@@ -370,7 +489,7 @@ export default function Home() {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white/80 dark:bg-gray-900/80 text-[#00CEC8] dark:text-[#00CEC8] px-4 py-2 rounded-full shadow hover:bg-[#00CEC8]/10 dark:hover:bg-[#00CEC8]/10 transition text-sm font-semibold backdrop-blur border border-[#00CEC8] dark:border-[#00CEC8]"
+                    className="bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-gray-100 px-4 py-2 rounded-full shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition text-sm font-semibold backdrop-blur border border-gray-300 dark:border-gray-700"
                   >
                     GitHub
                   </a>
@@ -380,133 +499,265 @@ export default function Home() {
           ))}
         </div>
       </section>
+      {/* Skills Section */}
+      <section id="skills" className="max-w-6xl mx-auto py-16 px-4 sm:px-8">
+        <h2 className="text-3xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
+          Skills
+        </h2>
+        {/* Divider */}
+        <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto mb-12" />
+
+        <style>{`
+    .flip-card {
+      perspective: 1000px;
+    }
+    .flip-card-inner {
+      transition: transform 0.6s ease-in-out;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner,
+    .flip-card:focus-within .flip-card-inner {
+      transform: rotateY(180deg) scale(1.02);
+    }
+    .flip-card-front,
+    .flip-card-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .flip-card-back {
+      transform: rotateY(180deg);
+    }
+  `}</style>
+
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
+          {skills.map((skill, idx) => {
+            const years = [
+              "3 years",
+              "3 years",
+              "3 years",
+              "2 years",
+              "2 years",
+              "3 years",
+              "2 years",
+              "2 years",
+            ][idx];
+
+            return (
+              <div
+                key={skill.name}
+                className="flip-card group relative cursor-pointer w-[150px] h-[150px]"
+                tabIndex={0}
+              >
+                <div className="flip-card-inner w-full h-full">
+                  {/* Front Side */}
+                  <div className="flip-card-front backdrop-blur-md bg-gradient-to-br from-black/90 to-gray-900/70 rounded-2xl p-4 text-center font-semibold text-white shadow-xl border border-gray-700 w-full h-full text-lg flex flex-col items-center justify-center gap-2">
+                    <Image
+                      src={skill.img}
+                      alt={skill.name + " logo"}
+                      width={48}
+                      height={48}
+                      className="mb-1"
+                    />
+                    <span>{skill.name}</span>
+                  </div>
+
+                  {/* Back Side */}
+                  <div className="flip-card-back backdrop-blur-md bg-gradient-to-br from-gray-900 to-black/90 rounded-2xl p-4 text-center font-bold text-[#00CEC8] shadow-xl border border-gray-700 w-full h-full text-lg flex items-center justify-center">
+                    {years}
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
 
       {/* Contact Section */}
-      <section id="contact" className="max-w-4xl mx-auto py-16 px-4 sm:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 backdrop-blur-xl bg-white/60 dark:bg-gray-900/60 rounded-2xl p-8 shadow-lg border border-[#00CEC8] dark:border-[#00CEC8]">
-          {/* Contact Form - Left Side */}
-          <div className="flex flex-col justify-center">
-            <h2 className="text-3xl font-bold mb-8 text-[#00CEC8] dark:text-[#00CEC8] text-center md:text-left drop-shadow-lg">
-              Contact
-            </h2>
-            <form className="flex flex-col gap-6">
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="name"
-                  className="font-semibold text-[#00CEC8] dark:text-[#00CEC8]"
+      <section
+        id="contact"
+        className="w-full max-w-7xl mx-auto py-20 px-2 sm:px-6 md:px-10"
+      >
+        <h2 className="text-4xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
+          Contact Us
+        </h2>
+        {/* Divider */}
+        <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto mb-12 sm:mb-16" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-16">
+          {/* Send a Message Container */}
+          <div className="min-h-[400px] md:min-h-[550px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white text-center md:text-left drop-shadow">
+                Send a Message
+              </h3>
+              <form className="flex flex-col gap-4 sm:gap-6">
+                {/* Name */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="name"
+                    className="font-semibold text-gray-900 dark:text-gray-100"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-gray-100 shadow focus:outline-none focus:border-gray-500 dark:focus:border-gray-400"
+                  />
+                </div>
+
+                {/* Email */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="email"
+                    className="font-semibold text-gray-900 dark:text-gray-100"
+                  >
+                    Email
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-gray-100 shadow focus:outline-none focus:border-gray-500 dark:focus:border-gray-400"
+                  />
+                </div>
+
+                {/* Message */}
+                <div className="flex flex-col gap-2">
+                  <label
+                    htmlFor="message"
+                    className="font-semibold text-gray-900 dark:text-gray-100"
+                  >
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={5}
+                    required
+                    className="px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white/90 dark:bg-gray-900/90 text-gray-900 dark:text-gray-100 shadow resize-none focus:outline-none focus:border-gray-500 dark:focus:border-gray-400"
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition border border-gray-700 dark:border-gray-300"
                 >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  required
-                  className="px-4 py-2 rounded-xl border border-[#00CEC8] dark:border-[#00CEC8] focus:border-[#00CEC8] focus:outline-none bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-gray-100 shadow"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="email"
-                  className="font-semibold text-[#00CEC8] dark:text-[#00CEC8]"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                  className="px-4 py-2 rounded-xl border border-[#00CEC8] dark:border-[#00CEC8] focus:border-[#00CEC8] focus:outline-none bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-gray-100 shadow"
-                />
-              </div>
-              <div className="flex flex-col gap-2">
-                <label
-                  htmlFor="message"
-                  className="font-semibold text-[#00CEC8] dark:text-[#00CEC8]"
-                >
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={5}
-                  required
-                  className="px-4 py-2 rounded-xl border border-[#00CEC8] dark:border-[#00CEC8] focus:border-[#00CEC8] focus:outline-none bg-white/80 dark:bg-gray-900/80 text-gray-900 dark:text-gray-100 shadow resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="bg-[#00CEC8]/80 dark:bg-[#00CEC8]/80 text-white font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-[#00CEC8]/90 dark:hover:bg-[#00CEC8]/90 transition backdrop-blur border border-[#00CEC8] dark:border-[#00CEC8]"
-              >
-                Send Message
-              </button>
-            </form>
+                  Send Message
+                </button>
+              </form>
+            </div>
           </div>
-          {/* Contact Information - Right Side */}
-          <div className="flex flex-col justify-center items-center md:items-start gap-6">
-            <h3 className="text-2xl font-bold text-[#00CEC8] dark:text-[#00CEC8] mb-2 drop-shadow">
-              Contact Information
-            </h3>
-            <div className="flex items-center gap-3 text-lg font-medium text-gray-800 dark:text-gray-200">
-              <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M16 12a4 4 0 01-8 0m8 0a4 4 0 00-8 0m8 0V8a4 4 0 00-8 0v4m8 0v4a4 4 0 01-8 0v-4"
-                />
-              </svg>
-              <span>charlsrebaja09@gmail.com</span>
+
+          {/* Contact Information Container */}
+          <div className="min-h-[400px] md:min-h-[550px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
+            <div>
+              <h3 className="text-2xl sm:text-3xl font-bold text-black dark:text-white drop-shadow mb-6 sm:mb-8">
+                Contact Information
+              </h3>
+              <div className="space-y-5 sm:space-y-6">
+                {/* Email */}
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0">
+                    {/* Email Icon */}
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M22 6l-10 7L2 6"
+                      />
+                    </svg>
+                  </div>
+                  <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200 break-words">
+                    charlsrebaja09@gmail.com
+                  </div>
+                </div>
+                {/* Phone */}
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0">
+                    {/* Phone Icon */}
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M16 12a4 4 0 01-8 0"
+                      />
+                    </svg>
+                  </div>
+                  <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">
+                    09057492817
+                  </div>
+                </div>
+                {/* Location */}
+                <div className="flex items-start gap-3 sm:gap-4">
+                  <div className="flex-shrink-0">
+                    {/* Location Icon */}
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 11c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"
+                      />
+                    </svg>
+                  </div>
+                  <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">
+                    Davao City, Philippines
+                  </div>
+                </div>
+              </div>
             </div>
-            <div className="flex items-center gap-3 text-lg font-medium text-gray-800 dark:text-gray-200">
-              <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8"
-                />
-              </svg>
-              <span>09057492817</span>
-            </div>
-            <div className="flex items-center gap-3 text-lg font-medium text-gray-800 dark:text-gray-200">
-              <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.657 16.657L13.414 12.414a2 2 0 00-2.828 0l-4.243 4.243"
-                />
-              </svg>
-              <span>Davao City, Philippines</span>
-            </div>
-            <div className="flex gap-4 mt-2">
+            {/* Social Media Links */}
+            <div className="flex gap-3 sm:gap-5 mt-8">
               <a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
               >
-                {/* Facebook SVG */}
                 <svg
-                  className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -518,11 +769,10 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
               >
-                {/* GitHub SVG */}
                 <svg
-                  className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -534,11 +784,10 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
               >
-                {/* LinkedIn SVG */}
                 <svg
-                  className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -550,11 +799,10 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+                className="backdrop-blur bg-white/60 dark:bg-black/60 rounded-full p-3 shadow hover:bg-gray-200 dark:hover:bg-gray-800 transition"
               >
-                {/* Twitter SVG */}
                 <svg
-                  className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                  className="w-6 h-6 text-gray-700 dark:text-gray-200"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                 >
@@ -567,11 +815,11 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-auto py-8 px-4 sm:px-0 text-center bg-white/70 dark:bg-gray-950/70 border-t border-[#00CEC8] dark:border-[#00CEC8] backdrop-blur-xl rounded-t-2xl shadow-lg">
+      <footer className="mt-auto py-8 px-4 sm:px-0 text-center bg-gradient-to-r from-black via-gray-900 to-gray-800 border-t border-gray-700 backdrop-blur-xl rounded-t-2xl shadow-lg">
         <div className="flex flex-col sm:flex-row items-center justify-between max-w-4xl mx-auto gap-4">
-          <div className="flex items-center gap-3 text-[#00CEC8] dark:text-[#00CEC8] font-bold text-lg">
+          <div className="flex items-center gap-3 text-white font-bold text-lg">
             <svg
-              className="w-7 h-7 text-[#00CEC8] dark:text-[#00CEC8]"
+              className="w-7 h-7 text-[#00CEC8]"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -585,10 +833,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
             >
               <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                className="w-6 h-6 text-[#00CEC8]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -600,10 +848,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
             >
               <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                className="w-6 h-6 text-[#00CEC8]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -615,10 +863,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
             >
               <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                className="w-6 h-6 text-[#00CEC8]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -630,10 +878,10 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Twitter"
-              className="backdrop-blur bg-white/40 dark:bg-black/40 rounded-full p-2 shadow hover:bg-[#00CEC8]/20 dark:hover:bg-[#00CEC8]/30 transition"
+              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
             >
               <svg
-                className="w-6 h-6 text-[#00CEC8] dark:text-[#00CEC8]"
+                className="w-6 h-6 text-[#00CEC8]"
                 fill="currentColor"
                 viewBox="0 0 24 24"
               >
@@ -641,7 +889,7 @@ export default function Home() {
               </svg>
             </a>
           </div>
-          <div className="text-gray-600 dark:text-gray-400 text-sm mt-2 sm:mt-0">
+          <div className="text-gray-300 text-sm mt-2 sm:mt-0">
             © 2025 Charls. All rights reserved.
           </div>
         </div>
