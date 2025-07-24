@@ -4,11 +4,11 @@ import Image from "next/image";
 
 const skills = [
   {
-    name: "HTML",
+    name: "HTML5",
     img: "/images/html.png",
   },
   {
-    name: "CSS",
+    name: "CSS3",
     img: "/images/css.png",
   },
   {
@@ -167,19 +167,24 @@ export default function Home() {
           "linear-gradient(#e5e7eb 2px, transparent 0), linear-gradient(90deg, #939496ff 1px, transparent 0)",
         backgroundSize: "100px 100px",
       }}
+      aria-label="Main content"
     >
       {/* Header/Navbar */}
-      <header className="sticky top-0 z-30 backdrop-blur-xl bg-white/80 dark:bg-black/80 shadow-lg flex items-center justify-between px-6 py-4 rounded-b-2xl border-b border-gray-300 dark:border-gray-700">
+      <header
+        className="sticky top-0 z-30 backdrop-blur-xl bg-white/80 dark:bg-black/80 shadow-lg flex items-center justify-between px-6 py-4 rounded-b-2xl border-b border-gray-300 dark:border-gray-700"
+        aria-label="Main navigation"
+      >
         <a
           href="#home"
-          className="text-black dark:text-white font-extrabold text-2xl tracking-tight drop-shadow-lg"
+          className="text-black dark:text-white font-extrabold text-2xl tracking-tight drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+          aria-label="Go to Home section"
         >
           Charls
         </a>
         {/* Mobile Menu Button */}
         <button
-          className="sm:hidden flex items-center justify-center p-2 rounded-full border border-gray-400 dark:border-gray-600 bg-white dark:bg-black text-gray-700 dark:text-gray-200 shadow focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-800 transition"
-          aria-label="Open menu"
+          className="sm:hidden flex items-center justify-center p-2 rounded-full border border-gray-400 dark:border-gray-600 bg-white dark:bg-black text-gray-700 dark:text-gray-200 shadow focus:outline-none focus:ring-2 focus:ring-[#00CEC8] hover:bg-gray-100 dark:hover:bg-gray-800 transition"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
           onClick={() => setMenuOpen(!menuOpen)}
         >
           {/* Hamburger Icon */}
@@ -198,7 +203,7 @@ export default function Home() {
           </svg>
         </button>
         {/* Desktop Nav */}
-        <nav className="hidden sm:block">
+        <nav className="hidden sm:block" aria-label="Desktop navigation">
           <ul className="flex gap-6 text-base font-semibold">
             {[
               { id: "home", label: "Home" },
@@ -210,11 +215,12 @@ export default function Home() {
               <li key={item.id}>
                 <a
                   href={`#${item.id}`}
-                  className={`hover:text-gray-700 dark:hover:text-gray-200 transition ${
+                  className={`hover:text-gray-700 dark:hover:text-gray-200 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
                     activeSection === item.id
                       ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
                       : ""
                   }`}
+                  aria-label={`Go to ${item.label} section`}
                 >
                   {item.label}
                 </a>
@@ -224,7 +230,10 @@ export default function Home() {
         </nav>
         {/* Mobile Nav Dropdown */}
         {menuOpen && (
-          <nav className="absolute top-full left-0 w-full bg-white dark:bg-black shadow-lg rounded-b-2xl sm:hidden z-40">
+          <nav
+            className="absolute top-full left-0 w-full bg-white dark:bg-black shadow-lg rounded-b-2xl sm:hidden z-40"
+            aria-label="Mobile navigation"
+          >
             <ul className="flex flex-col gap-2 py-4 px-8 text-base font-semibold">
               {[
                 { id: "home", label: "Home" },
@@ -236,12 +245,13 @@ export default function Home() {
                 <li key={item.id}>
                   <a
                     href={`#${item.id}`}
-                    className={`block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition ${
+                    className={`block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
                       activeSection === item.id
                         ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
                         : ""
                     }`}
                     onClick={() => setMenuOpen(false)}
+                    aria-label={`Go to ${item.label} section`}
                   >
                     {item.label}
                   </a>
@@ -255,7 +265,8 @@ export default function Home() {
       {/* Hero Section */}
       <section
         id="home"
-        className="w-full flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-12 md:px-20 py-20 gap-12 relative bg-cover bg-center bg-no-repeat"
+        className="w-full flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-12 md:px-20 py-20 gap-12 relative bg-cover bg-center bg-no-repeat animate-section"
+        aria-label="Hero section"
       >
         {/* 👋 Waving Animation Style */}
         <style>{`
@@ -381,9 +392,11 @@ export default function Home() {
             {/* CTA Button */}
             <a
               href="#contact"
-              className="mt-4 inline-block bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-3 rounded-full shadow-md border border-transparent hover:bg-gray-800 dark:hover:bg-gray-200 transition duration-300"
+              className="mt-4 inline-block bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-3 rounded-full shadow-md border border-transparent transition duration-300 relative overflow-hidden group"
+              style={{ zIndex: 1 }}
             >
-              Contact Me
+              <span className="relative z-10">Contact Me</span>
+              <span className="absolute inset-0 z-0 group-hover:scale-110 group-hover:rotate-2 group-hover:bg-gradient-to-r group-hover:from-[#00CEC8] group-hover:via-[#00b4d8] group-hover:to-[#48cae4] group-hover:opacity-80 transition-all duration-500 rounded-full"></span>
             </a>
           </div>
 
@@ -404,7 +417,8 @@ export default function Home() {
       {/* About Section */}
       <section
         id="about"
-        className="max-w-3xl mx-auto py-16 px-4 sm:px-8 animate-fadein"
+        className="max-w-3xl mx-auto py-16 px-4 sm:px-8 animate-section"
+        aria-label="About section"
       >
         <style>{`
           @keyframes fadein {
@@ -445,21 +459,22 @@ export default function Home() {
           {/* Skill Badges */}
           <div className="flex flex-wrap gap-2 mb-6">
             {[
-              "HTML",
-              "CSS",
-              "Bootstrap",
-              "Tailwind",
-              "JavaScript",
-              "PHP",
-              "Next.js",
-              "MySQL",
-              "XAMPP",
+              { name: "HTML", bg: "bg-orange-100 text-orange-900" },
+              { name: "CSS", bg: "bg-blue-100 text-blue-900" },
+              { name: "Bootstrap", bg: "bg-purple-100 text-purple-900" },
+              { name: "Tailwind", bg: "bg-cyan-100 text-cyan-900" },
+              { name: "JavaScript", bg: "bg-yellow-100 text-yellow-900" },
+              { name: "PHP", bg: "bg-indigo-100 text-indigo-900" },
+              { name: "Next.js", bg: "bg-gray-100 text-gray-900" },
+              { name: "MySQL", bg: "bg-teal-100 text-teal-900" },
+              { name: "XAMPP", bg: "bg-orange-200 text-orange-900" },
             ].map((skill) => (
               <span
-                key={skill}
-                className="px-3 py-1 rounded-full text-sm font-semibold bg-gray-700/40 text-gray-200 border border-gray-600 shadow-sm hover:bg-gray-600/70 transition"
+                key={skill.name}
+                className={`px-3 py-1 rounded-full text-sm font-semibold border border-gray-200 shadow-sm hover:scale-105 transition ${skill.bg}`}
+                aria-label={skill.name}
               >
-                {skill}
+                {skill.name}
               </span>
             ))}
           </div>
@@ -476,8 +491,13 @@ export default function Home() {
           </p>
         </div>
       </section>
+
       {/* Projects Section */}
-      <section id="projects" className="max-w-6xl mx-auto py-16 px-4 sm:px-8">
+      <section
+        id="projects"
+        className="max-w-6xl mx-auto py-16 px-4 sm:px-8 animate-section"
+        aria-label="Projects section"
+      >
         <h2 className="text-3xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
           My Projects
         </h2>
@@ -487,8 +507,23 @@ export default function Home() {
           {projects.map((project, idx) => (
             <div
               key={idx}
-              className="backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl shadow-xl overflow-hidden flex flex-col border border-gray-300 dark:border-gray-700 transition-transform duration-200 hover:scale-102 hover:shadow-2xl hover:border-gray-500 dark:hover:border-gray-400"
+              className="glass-card rounded-2xl shadow-xl overflow-hidden flex flex-col border border-gray-300 dark:border-gray-700 transition-transform duration-200 hover:scale-102 hover:shadow-2xl hover:border-gray-500 dark:hover:border-gray-400"
             >
+              <style>{`
+          .glass-card {
+            background: rgba(255,255,255,0.18);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.28);
+            transition: box-shadow 0.3s, border 0.3s;
+          }
+          .dark .glass-card {
+            background: rgba(30,41,59,0.28);
+            border: 1px solid rgba(60,60,60,0.28);
+          }
+        `}</style>
               <Image
                 src={project.img}
                 alt={project.name}
@@ -511,9 +546,11 @@ export default function Home() {
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-4 py-2 rounded-full shadow hover:bg-gray-700 dark:hover:bg-gray-300 transition text-sm font-semibold backdrop-blur border border-gray-700 dark:border-gray-300"
+                    className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black px-4 py-2 rounded-full shadow text-sm font-semibold backdrop-blur border border-gray-700 dark:border-gray-300 transition-all duration-300 relative overflow-hidden group"
+                    style={{ zIndex: 1 }}
                   >
-                    Live Demo
+                    <span className="relative z-10">Live Demo</span>
+                    <span className="absolute inset-0 z-0 group-hover:scale-110 group-hover:rotate-2 group-hover:bg-gradient-to-r group-hover:from-[#00CEC8] group-hover:via-[#00b4d8] group-hover:to-[#48cae4] group-hover:opacity-80 transition-all duration-500 rounded-full"></span>
                   </a>
                   <a
                     href={project.github}
@@ -529,8 +566,13 @@ export default function Home() {
           ))}
         </div>
       </section>
+
       {/* Skills Section */}
-      <section id="skills" className="max-w-6xl mx-auto py-16 px-4 sm:px-8">
+      <section
+        id="skills"
+        className="max-w-6xl mx-auto py-16 px-4 sm:px-8 animate-section"
+        aria-label="Skills section"
+      >
         <h2 className="text-3xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
           Skills
         </h2>
@@ -580,12 +622,12 @@ export default function Home() {
             return (
               <div
                 key={skill.name}
-                className="flip-card group relative cursor-pointer w-[150px] h-[150px]"
+                className="flip-card glass-card group relative cursor-pointer w-[150px] h-[150px]"
                 tabIndex={0}
               >
                 <div className="flip-card-inner w-full h-full">
                   {/* Front Side */}
-                  <div className="flip-card-front backdrop-blur-md bg-gradient-to-br from-black/90 to-gray-900/70 rounded-2xl p-4 text-center font-semibold text-white shadow-xl border border-gray-700 w-full h-full text-lg flex flex-col items-center justify-center gap-2">
+                  <div className="flip-card-front glass-card backdrop-blur-md bg-gradient-to-br from-black/90 to-gray-900/70 rounded-2xl p-4 text-center font-semibold text-white shadow-xl border border-gray-700 w-full h-full text-lg flex flex-col items-center justify-center gap-2">
                     <Image
                       src={skill.img}
                       alt={skill.name + " logo"}
@@ -593,24 +635,40 @@ export default function Home() {
                       height={48}
                       className="mb-1"
                     />
-                    <span>{skill.name}</span>
+                    <span className="text-black">{skill.name}</span>
                   </div>
 
                   {/* Back Side */}
-                  <div className="flip-card-back backdrop-blur-md bg-gradient-to-br from-gray-900 to-black/90 rounded-2xl p-4 text-center font-bold text-[#00CEC8] shadow-xl border border-gray-700 w-full h-full text-lg flex items-center justify-center">
-                    {years}
+                  <div className="flip-card-back glass-card backdrop-blur-md bg-gradient-to-br from-gray-900 to-black/90 rounded-2xl p-4 text-center font-bold text-[#00CEC8] shadow-xl border border-gray-700 w-full h-full text-lg flex items-center justify-center">
+                    <span className="text-black">{years}</span>
                   </div>
                 </div>
               </div>
             );
           })}
+          <style>{`
+          .glass-card {
+            background: rgba(255,255,255,0.18);
+            border-radius: 1rem;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.18);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255,255,255,0.28);
+            transition: box-shadow 0.3s, border 0.3s;
+          }
+          .dark .glass-card {
+            background: rgba(30,41,59,0.28);
+            border: 1px solid rgba(60,60,60,0.28);
+          }
+        `}</style>
         </div>
       </section>
 
       {/* Contact Section */}
       <section
         id="contact"
-        className="w-full max-w-7xl mx-auto py-20 px-2 sm:px-6 md:px-10"
+        className="w-full max-w-7xl mx-auto py-20 px-2 sm:px-6 md:px-10 animate-section"
+        aria-label="Contact section"
       >
         <h2 className="text-4xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
           Contact Us
@@ -773,7 +831,10 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-auto py-8 px-4 sm:px-0 text-center bg-gradient-to-r from-black via-gray-900 to-gray-800 border-t border-gray-700 backdrop-blur-xl rounded-t-2xl shadow-lg">
+      <footer
+        className="mt-auto py-8 px-4 sm:px-0 text-center bg-gradient-to-r from-black via-gray-900 to-gray-800 border-t border-gray-700 backdrop-blur-xl rounded-t-2xl shadow-lg"
+        aria-label="Footer"
+      >
         <div className="flex flex-col sm:flex-row items-center justify-between max-w-4xl mx-auto gap-4">
           <div className="flex items-center gap-3 text-white font-bold text-lg">
             <svg
@@ -837,6 +898,16 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      {/* Section Animation Styles */}
+      <style>{`
+        @keyframes sectionFadeUp {
+          from { opacity: 0; transform: translateY(40px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-section {
+          animation: sectionFadeUp 1.2s cubic-bezier(0.4,0,0.2,1);
+        }
+      `}</style>
     </div>
   );
 }
