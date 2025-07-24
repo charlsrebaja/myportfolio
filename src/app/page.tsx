@@ -229,36 +229,94 @@ export default function Home() {
           </ul>
         </nav>
         {/* Mobile Nav Dropdown */}
+        {/* Off-canvas Mobile Nav */}
+        <style>{`
+          .offcanvas-menu {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 80vw;
+            max-width: 320px;
+            background: rgba(255,255,255,0.98);
+            box-shadow: -2px 0 16px rgba(0,0,0,0.12);
+            z-index: 9999;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            flex-direction: column;
+            padding: 2rem 1.5rem;
+          }
+          .offcanvas-menu.open {
+            transform: translateX(0);
+          }
+          .dark .offcanvas-menu {
+            background: rgba(20,20,20,0.98);
+          }
+          .offcanvas-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.3);
+            z-index: 9998;
+            transition: opacity 0.3s;
+          }
+        `}</style>
         {menuOpen && (
-          <nav
-            className="absolute top-full left-0 w-full bg-white dark:bg-black shadow-lg rounded-b-2xl sm:hidden z-40"
-            aria-label="Mobile navigation"
-          >
-            <ul className="flex flex-col gap-2 py-4 px-8 text-base font-semibold">
-              {[
-                { id: "home", label: "Home" },
-                { id: "about", label: "About" },
-                { id: "skills", label: "Skills" },
-                { id: "projects", label: "Projects" },
-                { id: "contact", label: "Contact" },
-              ].map((item) => (
-                <li key={item.id}>
-                  <a
-                    href={`#${item.id}`}
-                    className={`block py-2 hover:text-gray-700 dark:hover:text-gray-200 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
-                      activeSection === item.id
-                        ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
-                        : ""
-                    }`}
-                    onClick={() => setMenuOpen(false)}
-                    aria-label={`Go to ${item.label} section`}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <>
+            <div
+              className="offcanvas-backdrop sm:hidden"
+              onClick={() => setMenuOpen(false)}
+              aria-label="Close menu backdrop"
+            />
+            <nav
+              className={`offcanvas-menu sm:hidden ${menuOpen ? "open" : ""}`}
+              aria-label="Mobile navigation"
+            >
+              <button
+                className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-700 dark:text-gray-200 shadow focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+                aria-label="Close menu"
+                onClick={() => setMenuOpen(false)}
+              >
+                <svg
+                  className="w-6 h-6"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+              <ul className="flex flex-col gap-6 mt-12 text-lg font-semibold">
+                {[
+                  { id: "home", label: "Home" },
+                  { id: "about", label: "About" },
+                  { id: "skills", label: "Skills" },
+                  { id: "projects", label: "Projects" },
+                  { id: "contact", label: "Contact" },
+                ].map((item) => (
+                  <li key={item.id}>
+                    <a
+                      href={`#${item.id}`}
+                      className={`block py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
+                        activeSection === item.id
+                          ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
+                          : "text-gray-900 dark:text-gray-100"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                      aria-label={`Go to ${item.label} section`}
+                    >
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          </>
         )}
       </header>
 
