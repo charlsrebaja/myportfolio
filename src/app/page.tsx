@@ -91,6 +91,7 @@ const projects = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [sending, setSending] = useState(false);
 
   // Listen to scroll and update activeSection
   useEffect(() => {
@@ -110,6 +111,39 @@ export default function Home() {
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const [successMsg, setSuccessMsg] = useState("");
+  useEffect(() => {
+    if (successMsg) {
+      const timer = setTimeout(() => setSuccessMsg(""), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [successMsg]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSending(true);
+    setSuccessMsg("");
+    const form = e.currentTarget;
+    const data = {
+      name: (form.elements.namedItem("name") as HTMLInputElement)?.value,
+      email: (form.elements.namedItem("email") as HTMLInputElement)?.value,
+      message: (form.elements.namedItem("message") as HTMLTextAreaElement)
+        ?.value,
+    };
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    setSending(false);
+    if (res.ok) {
+      setSuccessMsg("Message sent successfully! 🚀");
+      form.reset();
+    } else {
+      setSuccessMsg("Failed to send message. Please try again.");
+    }
+  };
 
   return (
     <div className="font-sans bg-white dark:bg-black text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
@@ -573,7 +607,10 @@ export default function Home() {
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white text-center md:text-left drop-shadow">
                 Send a Message
               </h3>
-              <form className="flex flex-col gap-4 sm:gap-6">
+              <form
+                className="flex flex-col gap-4 sm:gap-6"
+                onSubmit={handleSubmit}
+              >
                 {/* Name */}
                 <div className="flex flex-col gap-2">
                   <label
@@ -627,10 +664,25 @@ export default function Home() {
 
                 <button
                   type="submit"
+                  disabled={sending}
                   className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition border border-gray-700 dark:border-gray-300"
                 >
-                  Send Message
+                  {sending ? "Sending..." : "Send Message"}
                 </button>
+                {successMsg && (
+                  <div className="mt-4 px-4 py-3 rounded-xl bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 font-semibold text-center shadow transition-all animate-fadein">
+                    {successMsg}
+                  </div>
+                )}
+                <style>{`
+        @keyframes fadein {
+          from { opacity: 0; transform: translateY(20px);}
+          to { opacity: 1; transform: translateY(0);}
+        }
+        .animate-fadein {
+          animation: fadein 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+      `}</style>
               </form>
             </div>
           </div>
@@ -645,78 +697,51 @@ export default function Home() {
                 {/* Email */}
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="flex-shrink-0">
-                    {/* Email Icon */}
+                    {/* Real-time Email Icon (Material Design) */}
                     <svg
                       className="w-7 h-7 text-[#00CEC8]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16 4H8a4 4 0 00-4 4v8a4 4 0 004 4h8a4 4 0 004-4V8a4 4 0 00-4-4z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M22 6l-10 7L2 6"
-                      />
+                      <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 13 4 6.01V6h16zm0 12H4V8.99l8 6.99 8-6.99V18z" />
                     </svg>
                   </div>
-                  <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200 break-words">
+                  <a
+                    href="mailto:charlsrebaja09@gmail.com"
+                    className="text-base sm:text-lg font-medium text-[#00CEC8] hover:underline break-words focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+                  >
                     charlsrebaja09@gmail.com
-                  </div>
+                  </a>
                 </div>
                 {/* Phone */}
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="flex-shrink-0">
-                    {/* Phone Icon */}
+                    {/* Real-time Phone Icon (Material Design) */}
                     <svg
                       className="w-7 h-7 text-[#00CEC8]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M3 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2zm12-12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zm0 12a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M16 12a4 4 0 01-8 0"
-                      />
+                      <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1C10.07 21 3 13.93 3 5a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.46.57 3.58a1 1 0 01-.24 1.01l-2.2 2.2z" />
                     </svg>
                   </div>
-                  <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">
+                  <a
+                    href="tel:09057492817"
+                    className="text-base sm:text-lg font-medium text-[#00CEC8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+                  >
                     09057492817
-                  </div>
+                  </a>
                 </div>
                 {/* Location */}
                 <div className="flex items-start gap-3 sm:gap-4">
                   <div className="flex-shrink-0">
-                    {/* Location Icon */}
+                    {/* Real-time Location Icon (Material Design) */}
                     <svg
                       className="w-7 h-7 text-[#00CEC8]"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 11c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M12 22s8-4.5 8-10a8 8 0 10-16 0c0 5.5 8 10 8 10z"
-                      />
+                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z" />
                     </svg>
                   </div>
                   <div className="text-base sm:text-lg font-medium text-gray-800 dark:text-gray-200">
@@ -786,21 +811,6 @@ export default function Home() {
                 viewBox="0 0 24 24"
               >
                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.25 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.845-1.563 3.043 0 3.604 2.004 3.604 4.609v5.587z" />
-              </svg>
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter"
-              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
-            >
-              <svg
-                className="w-6 h-6 text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M24 4.557a9.93 9.93 0 01-2.828.775 4.932 4.932 0 002.165-2.724c-.951.555-2.005.959-3.127 1.184a4.916 4.916 0 00-8.38 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.855 2.01-.855 3.17 0 2.188 1.115 4.117 2.823 5.254a4.904 4.904 0 01-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 01-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 010 21.543a13.94 13.94 0 007.548 2.212c9.058 0 14.009-7.513 14.009-14.009 0-.213-.005-.425-.014-.636A10.025 10.025 0 0024 4.557z" />
               </svg>
             </a>
           </div>
