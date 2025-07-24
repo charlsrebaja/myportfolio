@@ -302,11 +302,14 @@ export default function Home() {
                   <li key={item.id}>
                     <a
                       href={`#${item.id}`}
-                      className={`block py-2 px-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
+                      className={`block py-2 px-2 rounded-lg hover:bg-gray-100 transition focus:outline-none focus:ring-2 focus:ring-[#00CEC8] ${
                         activeSection === item.id
-                          ? "text-[#00CEC8] dark:text-[#00CEC8] font-bold"
-                          : "text-gray-900 dark:text-gray-100"
+                          ? "text-[#00CEC8] font-bold"
+                          : "text-gray-900"
                       }`}
+                      style={{
+                        color: activeSection === item.id ? undefined : "#222",
+                      }}
                       onClick={() => setMenuOpen(false)}
                       aria-label={`Go to ${item.label} section`}
                     >
