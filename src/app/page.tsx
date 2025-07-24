@@ -131,17 +131,31 @@ export default function Home() {
       message: (form.elements.namedItem("message") as HTMLTextAreaElement)
         ?.value,
     };
-    const res = await fetch("/api/contact", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    setSending(false);
-    if (res.ok) {
-      setSuccessMsg("Message sent successfully! 🚀");
-      form.reset();
-    } else {
-      setSuccessMsg("Failed to send message. Please try again.");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      setSending(false);
+      if (res.ok) {
+        setSuccessMsg("Message sent successfully! 🚀");
+        form.reset();
+      } else {
+        let errorMsg = "Failed to send message. Please try again.";
+        try {
+          const errorData = await res.json();
+          if (errorData && errorData.error) {
+            errorMsg += `\n${errorData.error}`;
+          }
+        } catch (err) {
+          // ignore JSON parse error
+        }
+        setSuccessMsg(errorMsg);
+      }
+    } catch (err: any) {
+      setSending(false);
+      setSuccessMsg("Network error: " + (err?.message || err));
     }
   };
 
