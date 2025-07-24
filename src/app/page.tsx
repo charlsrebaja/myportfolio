@@ -83,7 +83,7 @@ const projects = [
     desc: "Empowering youth through digital access to programs, events, and initiatives.",
     tech: "HTML, CSS, Bootstrap,JavaScript",
     demo: "https://skbarangaymankilam.netlify.app/",
-    github: "#",
+    github: "https://charlsrebaja.github.io/skbarangaymankilam/",
     img: "/projects/project6.png",
   },
 ];
@@ -160,7 +160,14 @@ export default function Home() {
   };
 
   return (
-    <div className="font-sans bg-white dark:bg-black text-gray-900 dark:text-gray-100 min-h-screen flex flex-col">
+    <div
+      className="font-sans text-gray-900 dark:text-gray-100 min-h-screen flex flex-col relative"
+      style={{
+        backgroundImage:
+          "linear-gradient(#e5e7eb 2px, transparent 0), linear-gradient(90deg, #939496ff 1px, transparent 0)",
+        backgroundSize: "100px 100px",
+      }}
+    >
       {/* Header/Navbar */}
       <header className="sticky top-0 z-30 backdrop-blur-xl bg-white/80 dark:bg-black/80 shadow-lg flex items-center justify-between px-6 py-4 rounded-b-2xl border-b border-gray-300 dark:border-gray-700">
         <a
@@ -249,9 +256,6 @@ export default function Home() {
       <section
         id="home"
         className="w-full flex flex-col-reverse md:flex-row items-center justify-between px-6 sm:px-12 md:px-20 py-20 gap-12 relative bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/images/hero-bg.png')",
-        }}
       >
         {/* 👋 Waving Animation Style */}
         <style>{`
@@ -284,7 +288,7 @@ export default function Home() {
             </h1>
             {/* Divider */}
             <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
-            <p className="text-lg sm:text-xl text-dark-700 dark:text-gray-300 max-w-xl">
+            <p className="text-lg sm:text-xl text-dark-700 dark:text-dark-300 max-w-xl">
               Another day, another line of code.
             </p>
 
