@@ -73,7 +73,7 @@ const projects = [
   {
     name: "Mindanao Peaks",
     desc: "A modern web app for exploring the highest and most scenic mountains in Mindanao.",
-    tech: "Html, Tailwind CSS, JavaScript",
+    tech: "HTML, Tailwind CSS, JavaScript",
     demo: "https://mindanaopeakstikangniyeye.netlify.app/",
     github: "#",
     img: "/projects/project5.png",
@@ -97,15 +97,19 @@ export default function Home() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "skills", "projects", "contact"];
-      let current = "home";
+      let closestSection = "home";
+      let closestTop = -Infinity;
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 120) current = id;
+          if (rect.top <= 120 && rect.top > closestTop) {
+            closestTop = rect.top;
+            closestSection = id;
+          }
         }
       }
-      setActiveSection(current);
+      setActiveSection(closestSection);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
@@ -176,11 +180,12 @@ export default function Home() {
       >
         <a
           href="#home"
-          className="text-black dark:text-white font-extrabold text-2xl tracking-tight drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+          className="text-black dark:text-white font-extrabold text-2xl tracking-tight drop-shadow-lg focus:outline-none focus:ring-2 focus:ring-[#00CEC8] flex items-center gap-1"
           aria-label="Go to Home section"
         >
-          Charls
+          <span className="text-[#00CEC8]">&lt;/&gt;</span> Charls
         </a>
+
         {/* Mobile Menu Button */}
         <button
           className="sm:hidden flex items-center justify-center p-2 rounded-full border border-gray-400 dark:border-gray-600 bg-white dark:bg-black text-gray-700 dark:text-gray-200 shadow focus:outline-none focus:ring-2 focus:ring-[#00CEC8] hover:bg-gray-100 dark:hover:bg-gray-800 transition"
@@ -355,13 +360,42 @@ export default function Home() {
           {/* Left: Text, Icons, CTA */}
           <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
             <h1 className="text-3xl sm:text-5xl font-extrabold text-gray-900 dark:text-white leading-snug">
-              Hi, I’m Charls <span className="wave-emoji">👋</span> Passionate
-              Web Developer
+              Hi, I’m Charls <span className="wave-emoji">👋</span>
             </h1>
+            <h1
+              className="typing-animation relative whitespace-nowrap border-r-2 border-[#00CEC8] pr-2 ml-1 font-extrabold text-3xl sm:text-5xl sm:inline block sm:mt-0"
+              style={{ lineHeight: "1.1" }}
+            >
+              A Web Developer
+            </h1>
+            <style>{`
+              @keyframes typing {
+                from { width: 0 }
+                to { width: 12.2ch }
+              }
+              @keyframes blink {
+                0%, 100% { border-color: #00CEC8; }
+                50% { border-color: transparent; }
+              }
+              .typing-animation {
+                display: inline-block;
+                overflow: hidden;
+                white-space: nowrap;
+                width: 0;
+                animation: typing 2.2s steps(13, end) 0.5s forwards, blink 0.7s step-end infinite;
+                border-right-width: 2px;
+                font-family: inherit;
+                font-weight: bold;
+                color: #00CEC8;
+                font-size: 30px;
+                vertical-align: bottom;
+              }
+            `}</style>
             {/* Divider */}
             <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
-            <p className="text-lg sm:text-xl text-dark-700 dark:text-dark-300 max-w-xl">
-              Another day, another line of code.
+            <p className="text-sm sm:text-sl text-gray-800 dark:text-dark-300 max-w-xl">
+              I create beautiful, functional websites and web applications with
+              modern technologies and best practices.
             </p>
 
             {/* Social Icons */}
@@ -372,7 +406,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-[#00CEC8]"
               >
                 <svg
                   className="w-6 h-6 text-gray-800 dark:text-white"
@@ -397,7 +431,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-[#00CEC8]"
               >
                 <svg
                   className="w-6 h-6 text-gray-800 dark:text-white"
@@ -429,7 +463,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
-                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800"
+                className="transition-all hover:scale-105 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-[#00CEC8]"
               >
                 <svg
                   className="w-6 h-6 text-gray-800 dark:text-white"
@@ -635,7 +669,7 @@ export default function Home() {
         aria-label="Skills section"
       >
         <h2 className="text-3xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
-          Skills
+          My Skills
         </h2>
         {/* Divider */}
         <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto mb-12" />
