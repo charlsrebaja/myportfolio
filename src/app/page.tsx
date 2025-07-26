@@ -393,7 +393,7 @@ export default function Home() {
             `}</style>
             {/* Divider */}
             <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
-            <p className="text-sm sm:text-sl text-gray-800 dark:text-white-300 max-w-xl">
+            <p className="text-sm sm:text-sl text-gray-800 dark:text-white-900 max-w-xl">
               I create beautiful, functional websites and web applications with
               modern technologies and best practices.
             </p>
