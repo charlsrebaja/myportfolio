@@ -393,7 +393,7 @@ export default function Home() {
             `}</style>
             {/* Divider */}
             <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto md:mx-0 mb-2" />
-            <p className="text-sm sm:text-sl text-gray-800 dark:text-white-900 max-w-xl">
+            <p className="text-lg sm:text-sl text-white-800 dark:text-white max-w-xl">
               I create beautiful, functional websites and web applications with
               modern technologies and best practices.
             </p>
@@ -459,7 +459,7 @@ export default function Home() {
 
               {/* LinkedIn */}
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/charls-rebaja-02b366377/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn"
@@ -484,15 +484,31 @@ export default function Home() {
               </a>
             </div>
 
-            {/* CTA Button */}
-            <a
-              href="#contact"
-              className="mt-4 inline-block bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-3 rounded-full shadow-md border border-transparent transition duration-300 relative overflow-hidden group"
-              style={{ zIndex: 1 }}
-            >
-              <span className="relative z-10">Contact Me</span>
-              <span className="absolute inset-0 z-0 group-hover:scale-110 group-hover:rotate-2 group-hover:bg-gradient-to-r group-hover:from-[#00CEC8] group-hover:via-[#00b4d8] group-hover:to-[#48cae4] group-hover:opacity-80 transition-all duration-500 rounded-full"></span>
-            </a>
+            {/* CTA Buttons Side-by-Side */}
+            <div className="flex flex-wrap gap-4 mt-4">
+              {/* Contact Me Button */}
+              <a
+                href="#contact"
+                className="inline-block bg-black dark:bg-white text-white dark:text-black font-medium px-6 py-3 rounded-full shadow-md border border-transparent transition duration-300 relative overflow-hidden group"
+                style={{ zIndex: 1 }}
+              >
+                <span className="relative z-10">Contact Me</span>
+                <span className="absolute inset-0 z-0 group-hover:scale-110 group-hover:rotate-2 group-hover:bg-gradient-to-r group-hover:from-[#00CEC8] group-hover:via-[#00b4d8] group-hover:to-[#48cae4] group-hover:opacity-80 transition-all duration-500 rounded-full"></span>
+              </a>
+
+              {/* Download Resume Button */}
+              <a
+                href="/docs/charls-rebaja-resume.pdf"
+                download
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-white dark:bg-transparent text-black dark:text-white font-medium px-6 py-3 rounded-full shadow-md border border-gray-800 dark:border-white transition duration-300 hover:bg-[#00CEC8] hover:text-white dark:hover:text-black group relative overflow-hidden"
+                style={{ zIndex: 1 }}
+              >
+                <span className="relative z-10">Download Resume</span>
+                <span className="absolute inset-0 z-0 group-hover:scale-110 group-hover:bg-[#00CEC8] group-hover:opacity-80 transition-all duration-500 rounded-full"></span>
+              </a>
+            </div>
           </div>
 
           {/* Right: Profile Image */}
@@ -554,8 +570,8 @@ export default function Home() {
           {/* Skill Badges */}
           <div className="flex flex-wrap gap-2 mb-6">
             {[
-              { name: "HTML", bg: "bg-orange-100 text-orange-900" },
-              { name: "CSS", bg: "bg-blue-100 text-blue-900" },
+              { name: "HTML5", bg: "bg-orange-100 text-orange-900" },
+              { name: "CSS3", bg: "bg-blue-100 text-blue-900" },
               { name: "Bootstrap", bg: "bg-purple-100 text-purple-900" },
               { name: "Tailwind", bg: "bg-cyan-100 text-cyan-900" },
               { name: "JavaScript", bg: "bg-yellow-100 text-yellow-900" },
@@ -704,14 +720,14 @@ export default function Home() {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 place-items-center">
           {skills.map((skill, idx) => {
             const years = [
+              "4 years",
+              "4 years",
+              "4 years",
               "3 years",
               "3 years",
               "3 years",
-              "2 years",
-              "2 years",
               "3 years",
-              "2 years",
-              "2 years",
+              "3 years",
             ][idx];
 
             return (
@@ -762,18 +778,18 @@ export default function Home() {
       {/* Contact Section */}
       <section
         id="contact"
-        className="w-full max-w-7xl mx-auto py-20 px-2 sm:px-6 md:px-10 animate-section"
+        className="w-full max-w-5xl mx-auto py-20 px-2 sm:px-6 md:px-10 animate-section"
         aria-label="Contact section"
       >
         <h2 className="text-4xl font-bold mb-2 text-black dark:text-white text-center drop-shadow-lg">
-          Contact Us
+          Let's Work Together
         </h2>
         {/* Divider */}
         <div className="w-24 h-1 bg-gradient-to-r from-gray-700 to-gray-400 rounded-full mx-auto mb-12 sm:mb-16" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 lg:gap-16">
           {/* Send a Message Container */}
-          <div className="min-h-[400px] md:min-h-[550px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
+          <div className="min-h-[300px] md:min-h-[450px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold mb-4 sm:mb-6 text-black dark:text-white text-center md:text-left drop-shadow">
                 Send a Message
@@ -836,10 +852,13 @@ export default function Home() {
                 <button
                   type="submit"
                   disabled={sending}
-                  className="bg-gray-900 dark:bg-gray-100 text-white dark:text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition border border-gray-700 dark:border-gray-300"
+                  className={`bg-gray-900 dark:bg-gray-100 text-white dark:text-black font-semibold px-6 py-3 rounded-full shadow-lg hover:bg-gray-700 dark:hover:bg-gray-300 transition border border-gray-700 dark:border-gray-300 ${
+                    sending ? "cursor-wait" : "cursor-pointer"
+                  }`}
                 >
                   {sending ? "Sending..." : "Send Message"}
                 </button>
+
                 {successMsg && (
                   <div className="mt-4 px-4 py-3 rounded-xl bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 font-semibold text-center shadow transition-all animate-fadein">
                     {successMsg}
@@ -859,7 +878,7 @@ export default function Home() {
           </div>
 
           {/* Contact Information Container */}
-          <div className="min-h-[400px] md:min-h-[550px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
+          <div className="min-h-[300px] md:min-h-[450px] backdrop-blur-xl bg-white/80 dark:bg-gray-900/80 rounded-2xl p-6 sm:p-8 md:p-10 shadow-2xl border border-gray-300 dark:border-gray-700 w-full flex flex-col justify-between">
             <div>
               <h3 className="text-2xl sm:text-3xl font-bold text-black dark:text-white drop-shadow mb-6 sm:mb-8">
                 Contact Information
@@ -879,7 +898,7 @@ export default function Home() {
                   </div>
                   <a
                     href="mailto:charlsrebaja09@gmail.com"
-                    className="text-base sm:text-lg font-medium text-[#00CEC8] hover:underline break-words focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+                    className="text-base sm:text-lg font-medium text-dark hover:underline break-words focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
                   >
                     charlsrebaja09@gmail.com
                   </a>
@@ -898,7 +917,7 @@ export default function Home() {
                   </div>
                   <a
                     href="tel:09057492817"
-                    className="text-base sm:text-lg font-medium text-[#00CEC8] hover:underline focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
+                    className="text-base sm:text-lg font-medium text-dark hover:underline focus:outline-none focus:ring-2 focus:ring-[#00CEC8]"
                   >
                     09057492817
                   </a>
@@ -919,80 +938,95 @@ export default function Home() {
                     Davao City, Philippines
                   </div>
                 </div>
+                {/* Social Accounts */}
+                <div className="flex items-center gap-5 mt-6">
+                  {/* Facebook */}
+                  <a
+                    href="https://www.facebook.com/choy.rebaja"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="transition-all hover:scale-110 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:hover:bg-black/80"
+                  >
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 
+                  24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 
+                  1.893-4.788 4.659-4.788 1.325 0 2.463.099 
+                  2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 
+                  1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 
+                  24 24 23.408 24 22.674V1.326C24 .592 23.405 0 
+                  22.675 0z"
+                      />
+                    </svg>
+                  </a>
+                  {/* GitHub */}
+                  <a
+                    href="https://github.com/charlsrebaja"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub"
+                    className="transition-all hover:scale-110 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:hover:bg-black/80"
+                  >
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 
+                  5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 
+                  1.205.084 1.84 1.236 1.84 1.236 
+                  1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 
+                  0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 
+                  0 0 1.008-.322 3.301 1.23a11.52 11.52 
+                  0 0 1 3.003-.404c1.018.005 2.045.138 
+                  3.003.404 2.291-1.553 3.297-1.23 
+                  3.297-1.23.653 1.653.242 2.873.118 
+                  3.176.77.84 1.235 1.911 1.235 
+                  3.221 0 4.609-2.803 5.624-5.475 
+                  5.921.43.371.823 1.102.823 
+                  2.222v3.293c0 .322.218.694.825.576C20.565 
+                  22.092 24 17.592 24 12.297 24 5.67 18.627 0 12 0z"
+                      />
+                    </svg>
+                  </a>
+                  {/* LinkedIn */}
+                  <a
+                    href="https://www.linkedin.com/in/charls-rebaja-02b366377/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="transition-all hover:scale-110 bg-white/60 dark:bg-black/60 p-3 rounded-full shadow-md backdrop-blur border border-gray-300 dark:border-gray-700 hover:bg-black/80"
+                  >
+                    <svg
+                      className="w-7 h-7 text-[#00CEC8]"
+                      fill="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        d="M20.447 20.452h-3.554v-5.569c0-1.327-.027-3.037-1.85-3.037-1.852 
+                  0-2.135 1.445-2.135 2.939v5.667H9.354V9h3.414v1.561h.049c.476-.9 
+                  1.637-1.85 3.368-1.85 3.599 0 4.264 2.368 4.264 5.455v6.286zM5.337 
+                  7.433a2.062 2.062 0 1 1 0-4.125 2.062 2.062 0 0 1 0 
+                  4.125zM6.814 20.452H3.861V9h2.953v11.452zM22.225 
+                  0H1.771C.792 0 0 .771 0 1.723v20.549C0 
+                  23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 
+                  22.271V1.723C24 .771 23.2 0 22.225 0z"
+                      />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer
-        className="mt-auto py-8 px-4 sm:px-0 text-center bg-gradient-to-r from-black via-gray-900 to-gray-800 border-t border-gray-700 backdrop-blur-xl rounded-t-2xl shadow-lg"
-        aria-label="Footer"
-      >
-        <div className="flex flex-col sm:flex-row items-center justify-between max-w-4xl mx-auto gap-4">
-          <div className="flex items-center gap-3 text-white font-bold text-lg">
-            <svg
-              className="w-7 h-7 text-[#00CEC8]"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm0 18a8 8 0 110-16 8 8 0 010 16z" />
-            </svg>
-            Charls Portfolio
-          </div>
-          <div className="flex gap-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
-            >
-              <svg
-                className="w-6 h-6 text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M22.675 0h-21.35C.595 0 0 .592 0 1.326v21.348C0 23.408.595 24 1.326 24h11.495v-9.294H9.691v-3.622h3.13V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.797.143v3.24l-1.918.001c-1.504 0-1.797.715-1.797 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116C23.405 24 24 23.408 24 22.674V1.326C24 .592 23.405 0 22.675 0" />
-              </svg>
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub"
-              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
-            >
-              <svg
-                className="w-6 h-6 text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.809 1.304 3.495.997.108-.775.418-1.305.762-1.605-2.665-.305-5.466-1.334-5.466-5.93 0-1.31.469-2.381 1.236-3.221-.124-.303-.535-1.523.117-3.176 0 0 1.008-.322 3.301 1.23a11.52 11.52 0 013.003-.404c1.018.005 2.045.138 3.003.404 2.291-1.553 3.297-1.23 3.297-1.23.653 1.653.242 2.873.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.803 5.624-5.475 5.921.43.371.823 1.102.823 2.222v3.293c0 .322.218.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-              </svg>
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="backdrop-blur bg-black/70 rounded-full p-2 shadow hover:bg-gray-800 transition"
-            >
-              <svg
-                className="w-6 h-6 text-[#00CEC8]"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11.75 20h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.25 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.967v5.7h-3v-10h2.881v1.367h.041c.401-.761 1.381-1.563 2.845-1.563 3.043 0 3.604 2.004 3.604 4.609v5.587z" />
-              </svg>
-            </a>
-          </div>
-          <div className="text-gray-300 text-sm mt-2 sm:mt-0">
-            © 2025 Charls. All rights reserved.
-          </div>
-        </div>
-      </footer>
       {/* Section Animation Styles */}
       <style>{`
         @keyframes sectionFadeUp {
